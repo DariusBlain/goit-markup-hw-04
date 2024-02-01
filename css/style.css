@@ -57,8 +57,9 @@ img {
 /* ============HEADER===============  */
 
 .header {
-  border-bottom: 1px solid #e7e9fc;
   background-color: #fff;
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -94,6 +95,7 @@ img {
 }
 
 .navigation-item {
+  position: relative;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
@@ -106,24 +108,25 @@ img {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.item-studio {
+  color: #404bbf;
+}
+
 .navigation-item:hover,
 .navigation-item:focus {
   color: #404bbf;
 }
 
-.navigation-item::after {
+.item-studio::after {
   content: '';
   width: 100%;
   height: 4px;
   border-radius: 2px;
   background-color: #404bbf;
   display: block;
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.navigation-item:active::after {
-  transform: scaleX(1);
+  position: absolute;
+  left: 0;
+  bottom: -1px;
 }
 
 .contacts {
@@ -156,19 +159,20 @@ img {
 /* ============HERO===============  */
 
 .hero {
+  max-width: 1440px;
   background-image: linear-gradient(
       to bottom,
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
     url(../images/people-office.jpg);
-  background-size: 1440px;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-size: cover;
+  background-position: center;
   padding-top: 188px;
   padding-bottom: 188px;
-  flex-shrink: 0;
   text-align: center;
+  margin: 0 auto;
 }
 
 .title {
@@ -231,7 +235,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 0;
+  height: 112px;
   border-radius: 4px;
   border: 1px solid #8e8f99;
   background-color: #f4f4fd;
@@ -332,6 +336,12 @@ img {
   justify-content: center;
   background-color: #4d5ae5;
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-media-link:hover,
+.social-media-link:focus {
+  background-color: #404bbf;
 }
 
 .icon-social-media {
@@ -369,10 +379,7 @@ img {
 
 .our-portfolio-item {
   width: calc((100% - 48px) / 3);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .our-portfolio-item:hover,
@@ -380,6 +387,30 @@ img {
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.our-portfolio-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.our-portfolio-overlay-text {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  padding: 40px 32px;
+  background-color: #4d5ae5;
+  height: 100%;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.our-portfolio-item:hover .our-portfolio-overlay-text {
+  transform: translateY(0%);
 }
 
 .our-portfolio-container {
@@ -405,25 +436,6 @@ img {
   letter-spacing: 0.02em;
 }
 
-.our-portfolio-overlay {
-  color: #f4f4fd;
-  padding: 40px 32px 164px 32px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 360px;
-  height: 300px;
-  background: #4d5ae5;
-  transform: translateY(150%);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.our-portfolio-item:hover .our-portfolio-overlay {
-  transform: translateY(0);
-}
-
 /* ===========================  */
 
 /* ==========FOOTER=================  */
@@ -437,6 +449,11 @@ img {
 
 .container-logo {
   display: flex;
+  align-items: baseline;
+}
+
+.footer-container-info {
+  margin-right: 120px;
 }
 
 .logo-white {
@@ -463,12 +480,15 @@ img {
 }
 
 .social-subtitle {
-  color: #f4f4fd;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #ffffff;
   margin-bottom: 16px;
 }
 
 .footer-container-social {
-  margin-left: 120px;
 }
 
 .footer-list-icons {
@@ -481,6 +501,7 @@ img {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.footer-social-link:focus,
 .footer-social-link:hover {
   background-color: #31d0aa;
 }
